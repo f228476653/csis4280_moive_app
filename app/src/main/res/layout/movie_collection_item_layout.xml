@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="2dp"
+    android:layout_margin="4dp"
+    tools:layout_width="180dp"
+    tools:layout_margin="8dp"
+    app:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:minHeight="120dp"
+            android:background="@color/onyx_accent"
+            tools:src="@drawable/madmax"
+            />
+
+        <TextView
+	        android:textAppearance="@style/Text.Light"
+            android:id="@+id/titleview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_below="@id/imageview"
+            android:background="@color/onyx_accent"
+            android:layout_gravity="bottom"
+            tools:text="Super awesome collection"
+            android:gravity="center"/>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_above="@id/titleview"
+            android:background="@drawable/search_item_gradient_bg"/>
+
+
+	</RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

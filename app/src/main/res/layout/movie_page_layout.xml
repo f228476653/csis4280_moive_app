@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main.appbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/movie_app_bar_height"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp">
+
+	        <!-- dummy view added to stop from further collapsing -->
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/movie_app_bar_pin_height"
+		        tools:layout_height="96dp"
+		        app:layout_collapseMode="pin"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/poster_view"
+        android:layout_width="180dp"
+        android:layout_height="@dimen/movie_poster_height"
+        tools:layout_height="240dp"
+        app:layout_anchor="@id/main.appbar"
+        app:layout_anchorGravity="top"
+        android:elevation="4dp"
+        android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
+        android:background="@color/colorAccent"
+        tools:src="@drawable/madmax"
+        tools:targetApi="lollipop"/>
+
+	<TextView
+		android:textAppearance="@style/Text.Dark.Medium.Largest"
+		android:id="@+id/rating_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:elevation="4dp"
+		android:layout_marginEnd="16dp"
+		app:layout_anchor="@id/main.appbar"
+		app:layout_anchorGravity="center_vertical|end"
+		tools:text="8.1/10"
+		tools:targetApi="lollipop"/>
+
+
+<!--	<com.like.LikeButton-->
+<!--		android:id="@+id/fab"-->
+<!--		android:layout_width="40dp"-->
+<!--		android:layout_height="40dp"-->
+<!--		app:icon_size="20dp"-->
+<!--		app:icon_type="heart"-->
+<!--		android:layout_margin="10dp"-->
+<!--		android:padding="4dp"-->
+<!--		app:anim_scale_factor="2"-->
+<!--		app:layout_anchor="@id/main.appbar"-->
+<!--		app:layout_constraintStart_toStartOf="@+id/poster_view"-->
+<!--		app:layout_constraintTop_toBottomOf="@+id/main.appba"-->
+<!--		app:like_drawable="@drawable/ic_favorite_onyx_24dp"-->
+<!--		app:unlike_drawable="@drawable/ic_favorite_border_onyx_24dp"-->
+<!--		app:layout_anchorGravity="bottom|right|end"-->
+<!--		app:backgroundTint="#ffffff"/>-->
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/onyx_accent"
+        android:paddingTop="48dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+	    <LinearLayout
+		    android:id="@+id/content_layout"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:padding="16dp"
+		    android:orientation="vertical">
+
+		    <TextView
+			    android:textAppearance="@style/Text.Light.Medium.Largest"
+			    android:id="@+id/title_view"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    tools:text="Guardians of the galaxy vol. 2"/>
+
+
+
+
+		    <TextView
+			    android:id="@+id/released_view"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:textAppearance="@style/Text.Light"
+			    tools:text="Released on 05 May 2017"/>
+
+
+			<TextView
+				android:id="@+id/plot"
+				android:layout_marginTop="16dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textAppearance="@style/Text.Light.Medium.Larger"
+				android:text="Plot"/>
+
+			<TextView
+				android:id="@+id/plot_view"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textAppearance="@style/Text.Light"
+				tools:text="James Gunn, Dan Abnett (based on the Marvel comics by)"/>
+
+			<LinearLayout
+				android:id="@+id/review"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textAppearance="@style/Text.Light.Medium.Larger"
+					android:text="Reviews"/>
+
+
+			</LinearLayout>
+			<androidx.core.widget.NestedScrollView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/review_recyclerview"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"/>
+			</androidx.core.widget.NestedScrollView>
+			<LinearLayout
+				android:id="@+id/no_review"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				app:layout_constraintTop_toBottomOf="@id/review_recyclerview"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+				app:layout_constraintStart_toStartOf="@+id/profile_layout_not_post">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:textAppearance="@style/Text.Light"
+					android:text="No Reviews"
+					android:layout_width="wrap_content" />
+
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/btn_area"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="horizontal">
+				<Button
+					android:id="@+id/review_btn_add"
+					android:layout_width="150dp"
+					android:layout_height="40dp"
+					android:background="@drawable/shape_button_follow"
+					android:fontFamily="@font/captura_regular"
+					android:padding="5dp"
+					android:text="Add Review"
+					android:textAllCaps="false"
+					android:textColor="@color/colorWhite"
+					android:textSize="15sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="@+id/iv"
+					app:layout_constraintHorizontal_bias="0.762"
+					app:layout_constraintStart_toStartOf="@+id/iv"
+					app:layout_constraintTop_toTopOf="@+id/iv"
+					app:layout_constraintVertical_bias="0.696" />
+
+				<Button
+					android:id="@+id/fab"
+					android:layout_width="150dp"
+					android:layout_height="40dp"
+					android:layout_margin="5dp"
+					android:text="Like"
+					android:textColor="@color/colorWhite"
+					android:background="@drawable/shape_button_follow"
+					android:fontFamily="@font/captura_regular"/>
+				</LinearLayout>
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="vertical"
+				android:id="@+id/write_area"
+				android:visibility="gone">
+				<EditText
+					android:id="@+id/editTextTextMultiLine"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:gravity="start|top"
+					android:inputType="textMultiLine" />
+				<Button
+					android:id="@+id/submitReview"
+					android:layout_width="150dp"
+					android:layout_height="40dp"
+					android:layout_margin="5dp"
+					android:text="Submit"
+					android:textColor="@color/colorWhite"
+					android:background="@drawable/shape_button_follow"
+					android:fontFamily="@font/captura_regular"/>
+			</LinearLayout>
+	    </LinearLayout>
+	</androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

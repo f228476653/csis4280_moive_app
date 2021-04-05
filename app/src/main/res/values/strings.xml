@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="app_username">Movie</string>
+    <string name="movie_page_episodes_title">Episodes</string>
+    <string name="movie_page_plot_title">Plot</string>
+    <string name="movie_page_writers_title">Writers</string>
+    <string name="movie_page_actors_title">Actors</string>
+    <string name="movie_page_collections_title">In your collections</string>
+    <string name="menu_action_open_imdb">Open Imdb</string>
+    <string name="movie_page_add_to_collection">ADD TO COLLECTION</string>
+    <string name="movie_collection_list_page_delete_collection_cta">Delete</string>
+    <string name="search">Search</string>
+    <string name="no_results">no results</string>
+</resources>
